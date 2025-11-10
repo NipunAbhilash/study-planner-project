@@ -359,8 +359,8 @@ with tab_ml_insights:
                     st.subheader("Your Personalized Study Patterns")
                     st.write("We've analyzed your completed tasks and grouped them into these patterns:")
 
-                    # --- ⭐️⭐️⭐️ CHART BUG FIX IS HERE ⭐️⭐️⭐️ ---
-                    # I removed the restrictive 'scale=alt.Scale(domain=[1, 5])'
+                   
+                   
                     ml_chart = alt.Chart(finished_tasks_df).mark_circle(size=100).encode(
                         x=alt.X('Subject:N', title='Subject'),
                         y=alt.Y('Difficulty (1-5):O', title='Task Difficulty'),
@@ -385,3 +385,4 @@ with tab_ml_insights:
         st.error("Please install scikit-learn to run the ML module: `pip install scikit-learn`")
     except Exception as e:
         st.error(f"An error occurred during ML processing: {e}")
+
