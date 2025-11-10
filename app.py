@@ -7,7 +7,7 @@ import io
 import numpy as np
 
 st.set_page_config(
-    page_title="Smart Study Planner",
+    page_title="Smart Study Planner for Productivity",
     page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded" 
@@ -147,7 +147,7 @@ def generate_study_tips(df):
     recs = []
     recs.append(f"**Start with this:** Your highest priority task is **'{top_task['Topic']}'** for **{top_task['Subject']}**.")
     if days_left <= 1:
-        recs.append(f"**High Alert!** This task is due in {days_left} day(s). Use your next Pomodoro session on this.")
+        recs.append(f"**High Alert!** This task is due in {days_left} day(s). Use your next Pomodoro session on this and complete it quickly.")
     elif days_left < 3:
         recs.append(f"**Focus Up:** You only have {days_left} days for your top task. Make it a priority.")
     high_priority_tasks = df[df['Priority'] > 20]
@@ -158,8 +158,8 @@ def generate_study_tips(df):
 st.sidebar.title("Task Input")
 with st.sidebar.form("task_form", clear_on_submit=True):
     st.write("Add a new task to your planner:")
-    subject = st.text_input("Subject", placeholder="e.g., Python")
-    topic = st.text_input("Topic", placeholder="e.g., Streamlit Basics")
+    subject = st.text_input("Subject", placeholder="e.g., IT WORKSHOP III")
+    topic = st.text_input("Topic", placeholder="e.g., NumPy")
     deadline = st.date_input("Deadline", min_value=datetime.date.today())
     difficulty = st.slider("Difficulty (1-5)", 1, 5, 3)
     
@@ -184,8 +184,8 @@ with st.sidebar.form("task_form", clear_on_submit=True):
         else:
             st.sidebar.error("Please fill in all fields.")
 
-st.title("🧠 Smart Study Planner")
-st.write("Add your tasks in the sidebar to build your plan.")
+st.title("🧠 Smart Study Planner for  High Productivity !")
+st.write("Add your tasks in the sidebar to build your plan and execute them in minimal time with the highest possible productivity.")
 
 tab_plan, tab_pomo, tab_progress, tab_ml_insights = st.tabs(
     ["My Study Plan",
@@ -373,7 +373,7 @@ with tab_ml_insights:
                     st.subheader("What This Means (Insights)")
                     st.markdown("""
                     This chart shows the "workload patterns" of the tasks you've completed.
-                    * **Look at the clusters:** Does "Pattern 1" represent all your hard Math tasks? Does "Pattern 2" represent all your easy Python tasks?
+                    * **Look at the clusters:** Does "Pattern 1" represent all your hard tasks? Does "Pattern 2" represent all your easy tasks?
                     * **As you complete more tasks,** this chart will update and give you a clearer picture of your study habits.
                     """)
                 else:
